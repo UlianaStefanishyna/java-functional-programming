@@ -39,7 +39,7 @@ public class AsIntStream implements IntStream {
     }
 
     @Override
-    public Integer max() {
+    public synchronized Integer max() {
         return Collections.max(this.collect(this.data));
     }
 
