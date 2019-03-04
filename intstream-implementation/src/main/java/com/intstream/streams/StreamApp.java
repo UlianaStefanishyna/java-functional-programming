@@ -2,6 +2,12 @@ package com.intstream.streams;
 
 import com.intstream.streams.stream.IntStream;
 import com.intstream.streams.stream.AsIntStream;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.io.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class StreamApp {
 
@@ -24,13 +30,5 @@ public class StreamApp {
         StringBuilder str = new StringBuilder();
         intStream.forEach(str::append);
         return str.toString();
-    }
-
-    public static void main(String[] args) {
-        IntStream intStream = AsIntStream.of(-1, 1, 0);
-        Integer sum = intStream
-                .map(i -> i + 5)
-                .sum();
-        System.out.println(sum);
     }
 }
