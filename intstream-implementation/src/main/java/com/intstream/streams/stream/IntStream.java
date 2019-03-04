@@ -2,6 +2,8 @@ package com.intstream.streams.stream;
 
 import com.intstream.streams.function.*;
 
+import java.util.Optional;
+
 public interface IntStream {
 
     Double average();
@@ -25,4 +27,7 @@ public interface IntStream {
     Integer sum();
 
     int[] toArray();
+
+    Optional<Integer> findFirst();
 }
+

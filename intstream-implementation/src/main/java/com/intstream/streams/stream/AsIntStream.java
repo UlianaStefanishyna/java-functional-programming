@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
@@ -126,6 +127,12 @@ public class AsIntStream implements IntStream {
             array[i] = result.get(i);
         }
         return array;
+    }
+
+    @Override
+    public Optional<Integer> findFirst() {
+        List<Integer> collect = this.collect(this.data);
+        return collect.isEmpty() ? Optional.empty() : Optional.of(collect.get(0));
     }
 
     private boolean doMiddleOpsReturningEvaluatedValue(AtomicInteger value) {

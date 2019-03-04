@@ -5,6 +5,8 @@ import com.intstream.streams.stream.IntStream;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -101,5 +103,21 @@ public class StreamAppTest {
         double actual = intStream.filter(i -> i > 0)
                 .average();
         assertEquals(expected, actual, 1);
+    }
+
+    @Test
+    public void testFindFirstReturningValue() {
+        Optional<Integer> first = intStream
+                .filter(i -> i < 0).findFirst();
+        Optional<Integer> expValue= Optional.of(-1);
+        assertEquals(expValue, first);
+    }
+
+
+    @Test
+    public void testFindFirstNoValuePresent(){
+        Optional<Integer> first = intStream.filter(i -> i == 5).findFirst();
+        Optional<Integer> expectedValue = Optional.empty();
+        assertEquals(expectedValue, first);
     }
 }
